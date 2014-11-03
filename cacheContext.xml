@@ -1,0 +1,17 @@
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+						http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+    
+    
+    <bean id="entAuthCacheManager" class="com.fmr.eca.commons.auth.cache.EntitlementCacheManager">
+		<property name="cacheName" value="ENT_AUTH_CACHE" />
+		<property name="cacheManager"><ref local="cacheManager" /></property>
+	</bean>
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+	  <property name="configLocation"> 
+		<value>classpath:config/ehcache.xml</value> 
+	  </property>
+	</bean>
+</beans>
